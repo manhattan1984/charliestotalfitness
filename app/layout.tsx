@@ -21,6 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const links: { name: string; link: string }[] = [
+    { name: "Home", link: "/" },
     { name: "about", link: "/about" },
     { name: "our facilities", link: "/facilities" },
     { name: "shop ", link: "/shop" },
@@ -34,7 +35,7 @@ export default function RootLayout({
         <Header links={links} />
         <Menu links={links} />
         </MenuContext>
-          <div className="">{children}</div>
+          <div className="min-h-screen">{children}</div>
         <Footer links={links} />
       </body>
     </html>

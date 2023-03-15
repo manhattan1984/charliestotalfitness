@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
+import Packages from "@/app/(components)/Packages";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Packages />
     </div>
   );
 }

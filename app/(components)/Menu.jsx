@@ -17,14 +17,13 @@ const Menu = ({ links }) => {
       {links.map(({ link, name }, index) => (
         <div
           key={name}
-          className="flex gap-4 text-neutral-600 max-w-5xl"
+          className="flex gap-4 max-w-5xl"
         >
-          <p className="text-sm tracking-wider">{`0${index + 1}`}</p>
           <Link
             onClick={() => setMenuOpen(false)}
             href={link}
             className={`text-4xl font-black ${
-              pathname === link ? "" : ""
+              pathname === link ? "text-red-500" : "text-red-300"
             }`}
           >
             {name}
