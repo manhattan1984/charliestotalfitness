@@ -16,7 +16,7 @@ export default function Home() {
         />
         <div className="absolute h-full w-full top-0 backdrop-brightness-50">
           <div className="flex flex-col items-center justify-center uppercase h-full w-4/5 mx-auto text-white text-center gap-10">
-            <p className="text-4xl mt-auto">CHARLIE'S Total FITNESS CENTER</p>
+            <p className="text-4xl mt-auto">CHARLIES Total FITNESS CENTER</p>
             <p className="text-md">
               Plot 56, 57 Stadium Rd, Rumuola 500102, Port Harcourt, Rivers
             </p>

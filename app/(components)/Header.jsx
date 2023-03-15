@@ -17,7 +17,7 @@ const Header = ({ links }) => {
       <div className="flex justify-between items-center max-w-5xl mx-auto uppercase p-4 text-white">
         <Link href="/">
           <div className={`${menuOpen ? "text-red-500" : ""}`}>
-            <p className="">Charlie's</p>
+            <p className="">Charlies</p>
             <p className="text-xs">total fitness center</p>
           </div>
         </Link>
