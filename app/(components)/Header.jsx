@@ -13,12 +13,12 @@ const Header = ({ links }) => {
   const { menuOpen, setMenuOpen } = useMenu();
   const path = usePathname();
   return (
-    <nav className="fixed top-0 z-20 w-full backdrop-blur-sm">
+    <nav className="fixed top-0 z-20 w-full backdrop-blur-sm backdrop-brightness-90">
       <div className="flex justify-between items-center max-w-5xl mx-auto uppercase p-4 text-white">
         <Link href="/" className="">
           <div className={`${menuOpen ? "text-red-500" : ""}`}>
             <p className="">Charlies</p>
-            <p className="text-xs">total fitness center</p>
+
           </div>
         </Link>
 
