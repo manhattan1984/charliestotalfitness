@@ -3,12 +3,19 @@ import MenuContext from "./(context)/MenuContext";
 import Footer from "./(components)/Footer";
 import Menu from "./(components)/Menu";
 import Header from "./(components)/Header";
-import { Oswald } from "next/font/google";
+import { Oswald, Quicksand } from "next/font/google";
 
 const oswald = Oswald({
   subsets: ["latin"],
   variable: "--font-oswald",
+  weight: ["200", "300", "400", "500"],
 });
+const quicksand = Quicksand({
+  subsets: ["latin"],
+  variable: "--font-quicksand",
+  weight: ["300", "400", "500"],
+});
+
 
 export const metadata = {
   title: "Charlies Total Fitness Center",
@@ -23,19 +30,18 @@ export default function RootLayout({
   const links: { name: string; link: string }[] = [
     { name: "Home", link: "/" },
     { name: "about", link: "/about" },
-    { name: "our facilities", link: "/facilities" },
     { name: "shop ", link: "/shop" },
     { name: "my account", link: "/account" },
     { name: "Subscribe For A Plan", link: "/subscribe" },
   ];
   return (
     <html lang="en">
-      <body className={`${oswald.variable} font-sans`}>
+      <body className={`${oswald.variable} font-sans ${quicksand.variable}`}>
         <MenuContext>
-        <Header links={links} />
-        <Menu links={links} />
+          <Header links={links} />
+          <Menu links={links} />
         </MenuContext>
-          <div className="min-h-screen">{children}</div>
+        <div className="min-h-screen">{children}</div>
         <Footer links={links} />
       </body>
     </html>

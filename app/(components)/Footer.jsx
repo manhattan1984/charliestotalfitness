@@ -7,7 +7,7 @@ import { HiOutlineMail } from "react-icons/hi";
 const Footer = ({ links }) => {
   return (
     <div className="h-screen flex flex-col justify-center items-center text-center bg-blue-600 text-white gap-6">
-      <div className="uppercase flex flex-col-reverse gap-4">
+      <div className="uppercase flex flex-col-reverse gap-4 mt-auto">
         {links.map(({ link, name }) => (
           <Link className="border-white border p-2" key={link} href={link}>
             {name}
@@ -25,6 +25,10 @@ const Footer = ({ links }) => {
         <FaFacebookF />
         <FaInstagram />
         <HiOutlineMail />
+      </div>
+      <div className="mt-auto mb-4">
+        <p className="text-sm">© 2023 Charlie&rsquo;s Total Fitness Center</p>
+        <p className="text-xs">JacksonWebDev</p>
       </div>
     </div>
   );

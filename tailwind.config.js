@@ -10,6 +10,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-oswald)", ...fontFamily.sans],
+        serif: ["var(--font-quicksand)", ...fontFamily.serif],
       },
     },
   },

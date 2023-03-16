@@ -15,7 +15,7 @@ const Header = ({ links }) => {
   return (
     <nav className="fixed top-0 z-20 w-full backdrop-blur-sm">
       <div className="flex justify-between items-center max-w-5xl mx-auto uppercase p-4 text-white">
-        <Link href="/">
+        <Link href="/" className="">
           <div className={`${menuOpen ? "text-red-500" : ""}`}>
             <p className="">Charlies</p>
             <p className="text-xs">total fitness center</p>
