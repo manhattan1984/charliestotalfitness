@@ -39,7 +39,7 @@ const Package = ({ package: { name, price, duration } }) => {
               <div className="pt-4">
                 <button className="text-center uppercase w-full text-white bg-blue-600 p-2">log in to purchase</button>
                 <p className="text-sm mt-4 text-center">
-                  Don't have an account?{" "}
+                  Don&lsquo;t have an account?{" "}
                   <Link href="signup" className="underline underline-offset-2">Create one now.</Link>{" "}
                 </p>
               </div>
