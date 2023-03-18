@@ -1,4 +1,8 @@
+import "server-only";
 import "./globals.css";
+import SupabaseListener from "../components/supabase-listener";
+import SupabaseProvider from "../components/supabase-provider";
+import { createClient } from "../utils/supabase-server";
 import MenuContext from "./(context)/MenuContext";
 import Footer from "./(components)/Footer";
 import Menu from "./(components)/Menu";
@@ -16,13 +20,14 @@ const quicksand = Quicksand({
   weight: ["300", "400", "500"],
 });
 
-
 export const metadata = {
   title: "Charlies Total Fitness Center",
   description: "Official Charlies website",
 };
 
-export default function RootLayout({
+export const revalidate = 0;
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -34,15 +39,23 @@ export default function RootLayout({
     { name: "my account", link: "/account" },
     { name: "Subscribe For A Plan", link: "/subscribe" },
   ];
+  const supabase = createClient();
+
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
   return (
     <html lang="en">
       <body className={`${oswald.variable} font-sans ${quicksand.variable}`}>
-        <MenuContext>
-          <Header links={links} />
-          <Menu links={links} />
-        </MenuContext>
-        <div className="min-h-screen">{children}</div>
-        <Footer links={links} />
+        <SupabaseProvider accessToken={session?.access_token}>
+          <SupabaseListener serverAccessToken={session?.access_token} />
+          <MenuContext>
+            <Header links={links} />
+            <Menu links={links} />
+          </MenuContext>
+          <div className="min-h-screen">{children}</div>
+          <Footer links={links} />
+        </SupabaseProvider>
       </body>
     </html>
   );

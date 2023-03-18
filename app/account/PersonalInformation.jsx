@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import EditPersonalInformation from "./(components)/EditPersonalInformation";
 import ChangePassword from "./(components)/ChangePassword";
 import AddAddress from "./(components)/AddAddress";
-import Modal from "./(components)/Modal";
+import Modal from "../(components)/Modal";
 
 const Information = ({ name, value }) => (
   <div className="">
@@ -13,7 +13,9 @@ const Information = ({ name, value }) => (
   </div>
 );
 
-const PersonalInformation = () => {
+const PersonalInformation = ({
+  profile: { first_name, last_name, phone_number, email, birth_date, id },
+}) => {
   const [editInfoOpen, setEditInfoOpen] = useState(false);
   const [changePasswordOpen, setChangePasswordOpen] = useState(false);
   const [addAddressOpen, setaddAddressOpen] = useState(false);
@@ -23,10 +25,10 @@ const PersonalInformation = () => {
   const handleAddressOpen = () => setaddAddressOpen(!addAddressOpen);
 
   const informations = [
-    { name: "Name", value: "michael jackson" },
-    { name: "Email", value: "mikkimanhattan@gmail" },
-    { name: "Phone Number", value: "08125365368" },
-    { name: "Birth Date", value: "1/1/1999" },
+    { name: "Name", value: `${first_name}  ${last_name}` },
+    { name: "Email", value: email },
+    { name: "Phone Number", value: phone_number },
+    { name: "Birth Date", value: birth_date },
   ];
   return (
     <div className="">
@@ -54,7 +56,10 @@ const PersonalInformation = () => {
       </div>
 
       <Modal onClose={handleEditOpen} show={editInfoOpen}>
-        <EditPersonalInformation onClose={handleEditOpen} />
+        <EditPersonalInformation
+          profile={{ first_name, last_name, phone_number, email, birth_date }}
+          onClose={handleEditOpen}
+        />
       </Modal>
 
       <Modal onClose={handlePasswordOpen} show={changePasswordOpen}>
@@ -62,14 +67,17 @@ const PersonalInformation = () => {
       </Modal>
 
       <Modal onClose={handleAddressOpen} show={addAddressOpen}>
-        <AddAddress onClose={handleAddressOpen} />
+        <AddAddress onClose={handleAddressOpen} profile_id={id} />
       </Modal>
 
       <p className="my-4 font-medium text-xl">Address</p>
 
       <p className="my-4">No address provided</p>
 
-      <button onClick={handleAddressOpen} className="underline underline-offset-4">
+      <button
+        onClick={handleAddressOpen}
+        className="underline underline-offset-4"
+      >
         Add Address
       </button>
 
@@ -82,7 +90,6 @@ const PersonalInformation = () => {
           </button>
         </div>
       </div>
-
     </div>
   );
 };

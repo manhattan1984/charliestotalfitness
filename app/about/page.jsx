@@ -12,7 +12,7 @@ const Facility = ({ name, src, text }) => {
         sizes="100%"
         className="h-auto w-full mb-4"
       />
-      <p className="font-serif mx-4 text-lg">{text}</p>
+      <p className="font-serif mx-4 text-md">{text}</p>
     </div>
   );
 };
@@ -43,7 +43,7 @@ const page = () => {
   return (
     <div className="">
       <p className="text-4xl mt-16 pt-2 mx-4">About</p>
-      <p className="mx-4 text-lg my-4">
+      <p className="mx-4 text-lg my-4 font-serif">
         Charlie&rsquo;s Total Fitness Center has been getting people strong since we
         were established in 2009. We founded our gym to be a second home for all
         of our athletes. Whether you weight lift everyday, or you’ve never

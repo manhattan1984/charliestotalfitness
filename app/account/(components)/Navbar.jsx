@@ -15,14 +15,14 @@ const Navbar = () => {
       name: "Memberships",
       link: "memberships",
     },
-    {
-      name: "Reservations",
-      link: "reservations",
-    },
-    {
-      name: "Purchases",
-      link: "purchases",
-    },
+    // {
+    //   name: "Reservations",
+    //   link: "reservations",
+    // },
+    // {
+    //   name: "Purchases",
+    //   link: "purchases",
+    // },
   ];
 
   return (
