@@ -4,7 +4,7 @@ import { SupabaseClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import React, { useRef, use } from "react";
 
-const page = () => {
+const SignUp = () => {
   const { supabase } = useSupabase();
 
   const emailRef = useRef();
@@ -124,4 +124,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default SignUp;
