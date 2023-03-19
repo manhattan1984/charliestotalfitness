@@ -1,12 +1,16 @@
 "use client";
+
 import Link from "next/link";
 import React, { useState } from "react";
+import { useCart } from "../(context)/CartContext";
 import Modal from "./Modal";
 
-const Package = ({ name, price, value, id }) => {
+const Package = ({ name, price, value, id, user }) => {
   const [showPackage, setShowPackage] = useState(false);
+  const { setOpen, addOneToCart } = useCart();
 
   const handleShowPackage = () => setShowPackage(!showPackage);
+
   return (
     <>
       <div
@@ -34,17 +38,35 @@ const Package = ({ name, price, value, id }) => {
                 <p>Renewed</p>
                 <p>{value}</p>
               </div>
-              <div className="pt-4">
-                <button className="text-center uppercase w-full text-white bg-red-900 p-2">
-                  log in to purchase
-                </button>
-                <p className="text-sm mt-4 text-center">
-                  Don&lsquo;t have an account?{" "}
-                  <Link href="signup" className="underline underline-offset-2">
-                    Create one now.
-                  </Link>{" "}
-                </p>
-              </div>
+              {!user ? (
+                <div className="pt-4">
+                  <button className="text-center uppercase w-full text-white bg-red-900 p-2">
+                    log in to purchase
+                  </button>
+                  <p className="text-sm mt-4 text-center">
+                    Don&lsquo;t have an account?{" "}
+                    <Link
+                      href="signup"
+                      className="underline underline-offset-2"
+                    >
+                      Create one now.
+                    </Link>{" "}
+                  </p>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={() => {
+                      addOneToCart(id);
+                      setOpen(true);
+                      handleShowPackage();
+                    }}
+                    className="uppercase p-2 border bg-red-900 text-white"
+                  >
+                    purchase now
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

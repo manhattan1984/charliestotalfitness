@@ -1,5 +1,6 @@
 "use client";
-import supabase from "@/utils/supabase";
+
+import { useSupabase } from "@/components/supabase-provider";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
@@ -13,6 +14,8 @@ const CartProvider = ({ children }) => {
     "serverProducts",
     []
   );
+
+  const { supabase } = useSupabase();
 
   useEffect(() => {
     async function getProducts() {

@@ -15,15 +15,14 @@ const Menu = ({ links }) => {
       } h-screen w-screen z-10 fixed inset-0 flex flex-col gap-8 uppercase p-4 justify-center bg-white`}
     >
       {links.map(({ link, name }, index) => (
-        <div
-          key={name}
-          className="flex gap-4 max-w-5xl"
-        >
+        <div key={name} className="flex gap-4 max-w-5xl">
           <Link
             onClick={() => setMenuOpen(false)}
             href={link}
             className={`text-4xl font-black ${
-              pathname === link ? "text-red-900" : "text-red-300"
+              pathname === link || pathname.includes(link)
+                ? "text-red-900"
+                : "text-red-300"
             }`}
           >
             {name}

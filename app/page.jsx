@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import Packages from "@/app/(components)/Packages";
 import { createClient } from "@/utils/supabase-server";
+import { getVariationValue } from "@/utils/helpers";
 
 export default async function Home() {
   const supabase = createClient();
@@ -11,16 +12,6 @@ export default async function Home() {
       variation_option_id!inner(value)
     )`);
 
-  // console.log(JSON.stringify(product_item), error);
-
-  const getVariationValue = (configuration) => {
-    const {
-      variation_option_id: { value },
-    } = configuration[0];
-
-    return value;
-  };
-
   const plans = product_item.map(
     ({ price, id, product: { name }, product_configuration }) => ({
       price,
@@ -29,6 +20,9 @@ export default async function Home() {
       value: getVariationValue(product_configuration),
     })
   );
+
+  const { data: user, error: userError } = await supabase.auth.getUser();
+
   return (
     <div className="min-h-screen">
       <div className="relative">
@@ -99,7 +93,7 @@ export default async function Home() {
           width={0}
         />
       </div>
-      <Packages plans={plans} />
+      <Packages user={user} plans={plans} />
     </div>
   );
 }

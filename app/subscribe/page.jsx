@@ -1,3 +1,4 @@
+import { getVariationValue } from "@/utils/helpers";
 import React from "react";
 import Packages from "../(components)/Packages";
 import {createClient} from "../../utils/supabase-server";
@@ -10,15 +11,6 @@ const page = async () => {
       variation_option_id!inner(value)
     )`);
 
-  // console.log(JSON.stringify(product_item), error);
-
-  const getVariationValue = (configuration) => {
-    const {
-      variation_option_id: { value },
-    } = configuration[0];
-
-    return value;
-  };
 
   const plans = product_item.map(
     ({ price, id, product: { name }, product_configuration }) => ({

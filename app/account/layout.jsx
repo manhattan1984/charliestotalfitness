@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 import Navbar from "./(components)/Navbar";
 import SignOut from "./(components)/SignOut";
+import CartButton from "./(components)/CartButton";
 const layout = async ({ children }) => {
   const supabase = createClient();
 
@@ -13,12 +14,13 @@ const layout = async ({ children }) => {
   }
   return (
     <div className="my-14 mx-4">
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <p className="text-4xl mb-8 pt-10">Account</p>
-        <SignOut />
+        <CartButton />
       </div>
       <Navbar />
       <div className="">{children}</div>
+      <SignOut />
     </div>
   );
 };
