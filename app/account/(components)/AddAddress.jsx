@@ -22,23 +22,32 @@ const AddAddress = ({ onClose, profile_id }) => {
     const zipcode = zipcodeRef.current.value;
     const state = stateRef.current.value;
 
-    const { data, error } = await supabase
-      .from("addresses")
-      .insert([
-        { country, address, apartment, city, zipcode, profile_id, state },
-      ]);
+    const {
+      data: { id: address_id },
+      error,
+    } = await supabase
+      .from("address")
+      .insert([{ country, address, apartment, city, zipcode, state }])
+      .select()
+      .single();
 
-    if (!error) {
+    const { data, error: user_addressError } = await supabase
+      .from("user_address")
+      .upsert({ user_id: profile_id, address_id, is_default: true });
+
+    if (!(error && user_addressError)) {
       toast.success("Added Address Successfully");
+      close();
       return;
     }
 
     console.log("error", error);
+    console.log("addAddressError", user_addressError);
   };
 
   return (
     <>
-      <Toaster />
+      <Toaster position="bottom-center" />
       <div className="flex justify-center items-center bg-white w-full">
         <div className="border p-8">
           <div className="flex mb-4">
@@ -100,10 +109,10 @@ const AddAddress = ({ onClose, profile_id }) => {
           </div>
 
           <div className="[&>button]:uppercase [&>button]:p-2 [&>button]:w-full [&>button]:border flex flex-col gap-2 mt-8">
-            <button onClick={addAddress} className="bg-blue-600 text-white">
+            <button onClick={addAddress} className="bg-red-900 text-white">
               Save
             </button>
-            <button className="border-blue-600 text-blue-600" onClick={onClose}>
+            <button className="border-red-900 text-red-900" onClick={onClose}>
               Cancel
             </button>
           </div>

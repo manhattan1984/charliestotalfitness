@@ -11,7 +11,12 @@ const page = async ({ params: { id } }) => {
     .eq("id", id)
     .single();
 
-  return <PersonalInformation profile={profile} />;
+  let { data: user_address, error: user_addressError } = await supabase
+    .from("user_address")
+    .select("*")
+    .eq("user_id", id);
+
+  return <PersonalInformation profile={profile} address={user_address} />;
 };
 
 export default page;

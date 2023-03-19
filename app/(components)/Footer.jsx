@@ -6,7 +6,7 @@ import { HiOutlineMail } from "react-icons/hi";
 
 const Footer = ({ links }) => {
   return (
-    <div className="h-screen flex flex-col justify-center items-center text-center bg-blue-600 text-white gap-6">
+    <div className="h-screen flex flex-col justify-center items-center text-center bg-red-900 text-white gap-6">
       <div className="uppercase flex flex-col-reverse gap-4 mt-auto">
         {links.map(({ link, name }) => (
           <Link className="border-white border p-2" key={link} href={link}>

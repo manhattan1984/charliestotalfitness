@@ -44,7 +44,7 @@ const UpdatePassword = () => {
           </p>
           <button
             onClick={updatePassword}
-            className="w-full bg-blue-600 text-white p-2 mt-2"
+            className="w-full bg-red-900 text-white p-2 mt-2"
           >
             Save Password
           </button>

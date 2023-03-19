@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "utils/supabase-server.js", "components/supabase-listener.jsx", "app/signup/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "utils/supabase-server.js", "components/supabase-listener.jsx", "app/signup/page.jsx", "app/page.jsx"],
   "exclude": ["node_modules"]
 }

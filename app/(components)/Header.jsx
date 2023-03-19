@@ -21,22 +21,27 @@ const Header = ({ links }) => {
   const { scrollYProgress } = useScroll();
   const [isTop, setIsTop] = useState(true);
   scrollYProgress.on("change", (latest) => setIsTop(latest === 0));
+  const isHomePage = isTop && path === "/";
   return (
     <nav
       className={`fixed top-0 z-20 w-full ${
-        isTop ? "" : "bg-white"
+        isHomePage ? "" : "bg-white"
       } transition duration-300 ease-in-out`}
     >
       <div className="flex justify-between items-center max-w-5xl mx-auto uppercase p-4 text-white">
         <Link href="/" className="">
           <div className={``}>
-            <p className={`${isTop ? "" : "text-red-600"} ${dancingScript.className}`}>Charlies</p>
+            <p
+              className={`${isHomePage ? "" : "text-red-900"} `}
+            >
+              Charlies
+            </p>
           </div>
         </Link>
 
         <Transition show={!menuOpen}>
           <Bars3Icon
-            className={`h-6 w-6 cursor-pointer ${isTop ? "" : "text-red-600"}`}
+            className={`h-6 w-6 cursor-pointer ${isHomePage ? "" : "text-red-900"}`}
             onClick={() => setMenuOpen(!menuOpen)}
           />
         </Transition>

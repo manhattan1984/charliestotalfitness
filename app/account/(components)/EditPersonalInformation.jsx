@@ -114,11 +114,11 @@ const EditPersonalInformation = ({
           <div className="[&>button]:uppercase [&>button]:p-2 [&>button]:w-full [&>button]:border flex flex-col gap-2 mt-8">
             <button
               onClick={updateInformation}
-              className="bg-blue-600 text-white"
+              className="bg-red-900 text-white"
             >
               Save
             </button>
-            <button className="border-blue-600 text-blue-600" onClick={onClose}>
+            <button className="border-red-900 text-red-900" onClick={onClose}>
               Cancel
             </button>
           </div>

@@ -29,7 +29,6 @@ const SignUp = () => {
       birth_date &&
       phone_number
     ) {
-      console.log(birth_date);
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
@@ -44,7 +43,6 @@ const SignUp = () => {
         },
       });
       console.log(`data: ${data}, error: ${error}`);
-      console.log(data);
     }
   };
 
@@ -115,7 +113,7 @@ const SignUp = () => {
         </div>
         <button
           onClick={signUp}
-          className="py-1 px-4 mt-4 text-sm text-white bg-blue-600 uppercase"
+          className="py-1 px-4 mt-4 text-sm text-white bg-red-900 uppercase"
         >
           create account
         </button>

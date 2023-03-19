@@ -1,8 +1,34 @@
 import Image from "next/image";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import Packages from "@/app/(components)/Packages";
+import { createClient } from "@/utils/supabase-server";
 
-export default function Home() {
+export default async function Home() {
+  const supabase = createClient();
+
+  let { data: product_item, error } = await supabase.from("product_item")
+    .select(`price, id, product!inner(name), product_configuration!inner(
+      variation_option_id!inner(value)
+    )`);
+
+  // console.log(JSON.stringify(product_item), error);
+
+  const getVariationValue = (configuration) => {
+    const {
+      variation_option_id: { value },
+    } = configuration[0];
+
+    return value;
+  };
+
+  const plans = product_item.map(
+    ({ price, id, product: { name }, product_configuration }) => ({
+      price,
+      id,
+      name,
+      value: getVariationValue(product_configuration),
+    })
+  );
   return (
     <div className="min-h-screen">
       <div className="relative">
@@ -31,14 +57,15 @@ export default function Home() {
           About Charlie&rsquo;s Total Fitness Center
         </p>
         <p className="mb-4 font-serif">
-          Charlie&rsquo;s Total Fitness Center has been getting people strong since we
-          were established in 2009. We founded our gym to be a second home for
-          all of our athletes. Whether you weight lift everyday, or you’ve never
-          stepped into a gym before, Charlie&rsquo;s Total Fitness Center can help get
-          you strong, fast and flexible. You can train in-house or remotely. We
-          are located at Plot 56, 57 Stadium Rd, Rumuola 500102, Port Harcourt,
-          Rivers . We are a fully equipped, Total Fitness facility that offers
-          Key Card access, the first and only of its kind in Port Harcourt!
+          Charlie&rsquo;s Total Fitness Center has been getting people strong
+          since we were established in 2009. We founded our gym to be a second
+          home for all of our athletes. Whether you weight lift everyday, or
+          you’ve never stepped into a gym before, Charlie&rsquo;s Total Fitness
+          Center can help get you strong, fast and flexible. You can train
+          in-house or remotely. We are located at Plot 56, 57 Stadium Rd,
+          Rumuola 500102, Port Harcourt, Rivers . We are a fully equipped, Total
+          Fitness facility that offers Key Card access, the first and only of
+          its kind in Port Harcourt!
         </p>
         <Image
           src="/cool-weights.jpg"
@@ -49,7 +76,7 @@ export default function Home() {
           alt="weights"
         />
         <a
-          className="text-blue-600 border border-blue-600 p-2"
+          className="text-red-900 border border-red-900 p-2"
           href="https://wa.me/07062518233"
         >
           Get In Touch
@@ -72,7 +99,7 @@ export default function Home() {
           width={0}
         />
       </div>
-      <Packages />
+      <Packages plans={plans} />
     </div>
   );
 }

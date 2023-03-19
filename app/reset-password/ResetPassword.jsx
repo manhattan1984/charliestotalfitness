@@ -13,7 +13,7 @@ const ResetPassword = () => {
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
       redirectTo: "http://localhost:3000/update-password",
     });
-    console.log("data", data);
+
     console.log("error", error);
   };
   return (
@@ -52,7 +52,7 @@ const ResetPassword = () => {
         <div className="flex justify-center">
           <button
             onClick={resetPassword}
-            className="w-1/2 mx-auto py-2 uppercase bg-blue-600 text-center text-sm text-white font-bold"
+            className="w-1/2 mx-auto py-2 uppercase bg-red-900 text-center text-sm text-white font-bold"
           >
             reset password
           </button>

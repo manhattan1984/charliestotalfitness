@@ -24,7 +24,7 @@ const SignIn = () => {
       password,
     });
 
-    console.log("data", id);
+
     console.log("error", error);
 
     if (error) {
@@ -76,7 +76,7 @@ const SignIn = () => {
           <div className="flex justify-center">
             <button
               onClick={signIn}
-              className="w-1/2 mx-auto py-2 uppercase bg-blue-600 text-center text-sm text-white font-bold"
+              className="w-1/2 mx-auto py-2 uppercase bg-red-900 text-center text-sm text-white font-bold"
             >
               Log In
             </button>

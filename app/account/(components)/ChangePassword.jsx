@@ -45,10 +45,10 @@ const ChangePassword = ({ onClose }) => {
           </div>
 
           <div className="[&>button]:uppercase [&>button]:p-2 [&>button]:w-full [&>button]:border flex flex-col gap-2 mt-8">
-            <button className="bg-blue-600 text-white" onClick={updatePassword}>
+            <button className="bg-red-900 text-white" onClick={updatePassword}>
               Save
             </button>
-            <button className="border-blue-600 text-blue-600" onClick={onClose}>
+            <button className="border-red-900 text-red-900" onClick={onClose}>
               Cancel
             </button>
           </div>

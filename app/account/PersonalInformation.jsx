@@ -15,6 +15,7 @@ const Information = ({ name, value }) => (
 
 const PersonalInformation = ({
   profile: { first_name, last_name, phone_number, email, birth_date, id },
+  address,
 }) => {
   const [editInfoOpen, setEditInfoOpen] = useState(false);
   const [changePasswordOpen, setChangePasswordOpen] = useState(false);
@@ -62,7 +63,11 @@ const PersonalInformation = ({
         />
       </Modal>
 
-      <Modal onClose={handlePasswordOpen} show={changePasswordOpen}>
+      <Modal
+        address={address}
+        onClose={handlePasswordOpen}
+        show={changePasswordOpen}
+      >
         <ChangePassword onClose={handlePasswordOpen} />
       </Modal>
 
@@ -85,7 +90,7 @@ const PersonalInformation = ({
         <p className="pb-4 font-medium text-xl">Payment Methods</p>
 
         <div className="pt-8">
-          <button className="uppercase border border-blue-600 text-blue-600 p-2">
+          <button className="uppercase border border-red-900 text-red-900 p-2">
             Add a new card
           </button>
         </div>

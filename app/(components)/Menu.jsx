@@ -23,7 +23,7 @@ const Menu = ({ links }) => {
             onClick={() => setMenuOpen(false)}
             href={link}
             className={`text-4xl font-black ${
-              pathname === link ? "text-red-500" : "text-red-300"
+              pathname === link ? "text-red-900" : "text-red-300"
             }`}
           >
             {name}
