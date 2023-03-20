@@ -3,17 +3,17 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({ id }) => {
   const pathname = usePathname();
 
   const links = [
     {
       name: "Personal Information",
-      link: "",
+      link: `${id}`,
     },
     {
       name: "Memberships",
-      link: "memberships",
+      link: `memberships/${id}`,
     },
     // {
     //   name: "Reservations",

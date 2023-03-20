@@ -12,14 +12,23 @@ export default async function Home() {
       variation_option_id!inner(value)
     )`);
 
-  const plans = product_item.map(
-    ({ price, id, product: { name }, product_configuration }) => ({
-      price,
-      id,
-      name,
-      value: getVariationValue(product_configuration),
-    })
-  );
+  // const plans = product_item.map(
+  //   ({ price, id, product: { name }, product_configuration }) => ({
+  //     price,
+  //     id,
+  //     name,
+  //     value: getVariationValue(product_configuration),
+  //   })
+  // );
+
+  const url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://charliestotalfitness.vercel.app";
+
+  const res = await fetch(`${url}/api/list-plans`);
+
+  const plans = await res.json();
 
   const { data: user, error: userError } = await supabase.auth.getUser();
 

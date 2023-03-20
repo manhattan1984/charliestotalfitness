@@ -7,7 +7,12 @@ import CartButton from "./(components)/CartButton";
 const layout = async ({ children }) => {
   const supabase = createClient();
 
-  const { data, error } = await supabase.auth.getUser();
+  const {
+    data: {
+      user: { id },
+    },
+    error,
+  } = await supabase.auth.getUser();
 
   if (error) {
     redirect("/signin");
@@ -18,7 +23,7 @@ const layout = async ({ children }) => {
         <p className="text-4xl mb-8 pt-10">Account</p>
         <CartButton />
       </div>
-      <Navbar />
+      <Navbar id={id} />
       <div className="">{children}</div>
       <SignOut />
     </div>

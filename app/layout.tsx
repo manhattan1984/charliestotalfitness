@@ -59,7 +59,7 @@ export default async function RootLayout({
           <CartContext>
             <MenuContext>
               <Header links={links} />
-              <Cart />
+              {/* <Cart /> */}
               <Menu links={links} />
             </MenuContext>
             <div className="min-h-screen">{children}</div>

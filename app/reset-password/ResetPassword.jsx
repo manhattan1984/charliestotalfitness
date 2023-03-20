@@ -8,10 +8,15 @@ const ResetPassword = () => {
   const emailRef = useRef();
   const { supabase } = useSupabase();
 
+  const url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://charliestotalfitness.vercel.app";
+
   const resetPassword = async () => {
     const email = emailRef.current.value;
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: "http://localhost:3000/update-password",
+      redirectTo: `${url}/update-password`,
     });
 
     console.log("error", error);

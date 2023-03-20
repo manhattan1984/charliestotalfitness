@@ -24,10 +24,10 @@ const SignIn = () => {
       password,
     });
 
-
-    console.log("error", error);
+    console.log('id', id);
 
     if (error) {
+      console.log("error", error);
       return;
     }
 
